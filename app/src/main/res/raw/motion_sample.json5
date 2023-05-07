@@ -1,0 +1,63 @@
+{
+  ConstraintSets: {
+    start: {
+        player: {
+          width: 100,
+          height: 250,
+          start: ['parent', 'start', 10],
+          bottom: ['parent', 'bottom', 0],
+          top: ['parent','top',100]
+        },
+
+        ball: {
+          width: 30,
+          height: 30,
+          start: ['player','end',-30],
+          top: ['player','top',20]
+        },
+
+        basket: {
+          end: ['parent','end',10],
+          top: ['parent','top']
+        }
+    },
+
+    end: {
+      player: {
+        width: 100,
+        height: 250,
+        start: ['parent', 'start', 10],
+        bottom: ['parent', 'bottom', 0],
+        top: ['parent','top',100]
+      },
+
+      ball: {
+        width: 30,
+        height: 30,
+        end: ['parent', 'end', 10],
+        top: ['basket', 'bottom', 20],
+      },
+
+      basket: {
+        end: ['parent','end',10],
+        top: ['parent','top']
+      }
+    }
+  },
+  Transitions: {
+    default: {
+      from: 'start',
+      to: 'end',
+      pathMotionArc: 'startHorizontal',
+      KeyFrames: {
+        KeyAttributes: [
+          {
+            target: ['ball'],
+            frames: [0,50,75,100],
+            translationY: [0,-200,-350,0]
+          }
+        ]
+      }
+    }
+  }
+}
